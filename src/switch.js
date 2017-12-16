@@ -4,6 +4,7 @@ var sprintf   = require('yow/sprintf');
 var isString  = require('yow/is').isString;
 var isNumber  = require('yow/is').isNumber;
 var Timer     = require('yow/timer');
+var Color     = require('color');
 
 module.exports = class Switch extends Accessory {
 
@@ -61,7 +62,7 @@ module.exports = class Switch extends Accessory {
 
     turnOn() {
         this.log('Turning on', this.name);
-        this.platform.strip.fillRGB(255, 0, 0);
+        this.platform.strip.fill(Color('green').rgbNumber());
         this.platform.strip.render();
 
         this.state = true;
