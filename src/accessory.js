@@ -34,7 +34,7 @@ module.exports = class Accessory extends Events {
             service.setCharacteristic(this.Characteristic.Model, options.model);
 
         if (options.serialNumber)
-            service.setCharacteristic(this.Characteristic.SerialNumber, options.serialNumber;
+            service.setCharacteristic(this.Characteristic.SerialNumber, options.serialNumber);
 
         this.services.push(service);
     }
