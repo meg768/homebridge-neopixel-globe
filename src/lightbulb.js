@@ -24,7 +24,7 @@ module.exports = class Switch extends Accessory {
         this.brightness = 0;
         this.saturation = 50;
 
-        var service = new this.Service.Lightbulb(this.name);
+        var service = new this.Service.Lightbulb(this.name, 'KALLE-ANKA');
         var power = service.getCharacteristic(this.Characteristic.On);
         var hue = service.addCharacteristic(this.Characteristic.Hue);
         var saturation = service.addCharacteristic(this.Characteristic.Saturation);
