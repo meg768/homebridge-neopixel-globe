@@ -23,6 +23,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+      "color": "^2.0.0",
+      "pigpio": "^0.6.2",
+      "rpi-neopixels": "^1.0.24",
+      "rpi-obex-monitor": "^1.0.11",
+      "rpi-wifi-connection": "^1.0.6",
+      "sleep": "^5.1.1",
+      "yargs": "^8.0.2",
       "dotenv": "^4.0.0",
       "pushover-notifications": "^0.2.4",
       "yow": "^1.0.85"

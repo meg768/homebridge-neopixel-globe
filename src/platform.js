@@ -1,21 +1,30 @@
 "use strict";
 
-var Path     = require('path');
-var Events   = require('events');
-var Pushover = require('pushover-notifications');
-var Switch   = require('./switch.js');
+var Events           = require('events');
+var Pushover         = require('pushover-notifications');
+var Path             = require('path');
+var isObject         = require('yow/is').isObject;
+var isString         = require('yow/is').isString;
+var isFunction       = require('yow/is').isFunction;
+var Strip            = require('rpi-neopixels').Strip;
+var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
+var Monitor          = require('rpi-obex-monitor');
+var Wifi             = require('rpi-wifi-connection');
+var Button           = require('pigpio-button');
+var sprintf          = require('yow/sprintf');
+var isString         = require('yow/is').isString;
 
-var sprintf  = require('yow/sprintf');
-var isString = require('yow/is').isString;
-
+var Switch           = require('./switch.js');
 
 module.exports = class TelldusPlatform  {
 
     constructor(log, config, homebridge) {
 
-        this.config        = config;
-        this.log           = log;
-        this.homebridge    = homebridge;
+        this.config         = config;
+        this.log            = log;
+        this.homebridge     = homebridge;
+        this.strip          = new Strip({length:16, debug:this.log});
+        this.animationQueue = new AnimationQueue({debug:this.log});
 
         // Load .env
         require('dotenv').config({path: Path.join(process.env.HOME, '.homebridge/.env')});

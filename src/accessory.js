@@ -39,16 +39,6 @@ module.exports = class Accessory extends Events {
         this.services.push(service);
     }
 
-    setupAccessoryInformation() {
-        this.log('Adding info');
-        var service = new this.Service.AccessoryInformation();
-        service.setCharacteristic(this.Characteristic.Manufacturer, this.manufacturer);
-        service.setCharacteristic(this.Characteristic.Model, this.model);
-        service.setCharacteristic(this.Characteristic.SerialNumber, this.serialNumber);
-
-        this.services.push(service);
-    }
-
 
     identify(callback) {
         this.log('Identify called for accessory', this.name);

@@ -17,7 +17,7 @@ module.exports = class Switch extends Accessory {
             serialNumber:'123'
         });
 
-        
+
         this.state = false;
         this.setupSwitch(this.Service.Switch);
     }
@@ -61,12 +61,14 @@ module.exports = class Switch extends Accessory {
 
     turnOn() {
         this.log('Turning on', this.name);
+        this.platform.strip.fillRGB(255, 0, 0);
         this.state = true;
 
     }
 
     turnOff() {
         this.log('Turning off', this.name);
+        this.platform.strip.fillRGB(0, 0, 0);
         this.state = false;
     }
 
