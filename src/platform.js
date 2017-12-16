@@ -10,7 +10,6 @@ var Strip            = require('rpi-neopixels').Strip;
 var AnimationQueue   = require('rpi-neopixels').AnimationQueue;
 var Monitor          = require('rpi-obex-monitor');
 var Wifi             = require('rpi-wifi-connection');
-var Button           = require('pigpio-button');
 var sprintf          = require('yow/sprintf');
 var isString         = require('yow/is').isString;
 
