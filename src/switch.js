@@ -61,7 +61,7 @@ module.exports = class Switch extends Accessory {
 
     turnOn() {
         this.log('Turning on', this.name);
-        this.platform.strip.fillRGB(0, 255, 0, 0);
+        this.platform.strip.fillRGB(255, 0, 0);
         this.platform.strip.render();
 
         this.state = true;
