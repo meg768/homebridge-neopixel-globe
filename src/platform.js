@@ -14,6 +14,7 @@ var sprintf          = require('yow/sprintf');
 var isString         = require('yow/is').isString;
 
 var Switch           = require('./switch.js');
+var Lightbulb        = require('./lightbulb.js');
 
 module.exports = class TelldusPlatform  {
 
@@ -71,7 +72,7 @@ module.exports = class TelldusPlatform  {
         var accessories = [];
 
         this.log('accessories called!');
-        accessories.push(new Switch(this, {name:'KALLE'}));
+        accessories.push(new Lightbulb(this, {name:'KALLE'}));
 
         callback(accessories);
     }
