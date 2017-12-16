@@ -83,12 +83,16 @@ module.exports = class Switch extends Accessory {
 
 
     refresh() {
-        this.log('Refreshing lamp', this.name);
 
-        if (this.power)
+        if (this.power) {
+            this.log('Hue', this.hue, 'Saturation:', this.saturation, 'Brightness:', this.brightness);
             this.platform.strip.fill(Color.hsl(this.hue, this.saturation, this.brightness).rgbNumber());
-        else
+
+        }
+        else {
+            this.log('Power', this.power);
             this.platform.strip.fill(0);
+        }
 
         this.platform.strip.render();
 
