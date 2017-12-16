@@ -22,11 +22,13 @@ module.exports = class Accessory extends Events {
         this.serialNumber = 'FOO';
         this.model = 'BAR';
         this.manufacturer = 'OLLE';
+        this.log('Adding acceory');
 
         this.setupAccessoryInformation();
     }
 
     setupAccessoryInformation() {
+        this.log('Adding info');
         var service = new this.Service.AccessoryInformation();
         service.setCharacteristic(this.Characteristic.Manufacturer, this.manufacturer);
         service.setCharacteristic(this.Characteristic.Model, this.model);
