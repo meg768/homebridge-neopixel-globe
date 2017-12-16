@@ -13,14 +13,14 @@ module.exports = class Switch extends Accessory {
 
 
         this.addAccessoryInformation({
-            manufacturer: 'meg',
-            model:'model',
-            serialNumber:'123'
+            manufacturer: 'meg768',
+            model:'Neopixel RGB Globe',
+            serialNumber:'1'
         });
 
 
-        this.state = false;
-        this.hue   = 0;
+        this.power      = false;
+        this.hue        = 0;
         this.brightness = 0;
         this.saturation = 50;
 
@@ -30,17 +30,17 @@ module.exports = class Switch extends Accessory {
         var saturation = service.addCharacteristic(this.Characteristic.Saturation);
         var brightness = service.addCharacteristic(this.Characteristic.Brightness);
 
-        power.updateValue(this.getState());
-        hue.updateValue(this.getHue());
-        brightness.updateValue(this.getBrightness());
-        saturation.updateValue(this.getSaturation());
+        power.updateValue(this.power);
+        hue.updateValue(this.hue);
+        brightness.updateValue(this.brightness);
+        saturation.updateValue(this.saturation);
 
         power.on('get', (callback) => {
-            callback(null, this.state);
+            callback(null, this.power);
         });
 
-        power.on('set', (state, callback, context) => {
-            this.state = state;
+        power.on('set', (power, callback, context) => {
+            this.power = power;
             this.refresh();
             callback();
         });
@@ -85,7 +85,7 @@ module.exports = class Switch extends Accessory {
     refresh() {
         this.log('Refreshing lamp', this.name);
 
-        if (this.state)
+        if (this.power)
             this.platform.strip.fill(Color.hsl(this.hue, this.saturation, this.brightness).rgbNumber());
         else
             this.platform.strip.fill(0);
