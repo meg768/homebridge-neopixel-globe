@@ -28,6 +28,7 @@
       "rpi-neopixels": "^1.0.24",
       "rpi-obex-monitor": "^1.0.11",
       "rpi-wifi-connection": "^1.0.6",
+      "rpi-ws281x-native": "^0.8.2",
       "sleep": "^5.1.1",
       "yargs": "^8.0.2",
       "dotenv": "^4.0.0",
