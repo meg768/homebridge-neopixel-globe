@@ -3,7 +3,7 @@
 var Path     = require('path');
 var Events   = require('events');
 var Pushover = require('pushover-notifications');
-
+var Switch   = require('./switch.js');
 
 var sprintf  = require('yow/sprintf');
 var isString = require('yow/is').isString;
@@ -16,7 +16,6 @@ module.exports = class TelldusPlatform  {
         this.config        = config;
         this.log           = log;
         this.homebridge    = homebridge;
-        this.devices       = [];
 
         // Load .env
         require('dotenv').config({path: Path.join(process.env.HOME, '.homebridge/.env')});
@@ -61,6 +60,10 @@ module.exports = class TelldusPlatform  {
     }
 
     accessories(callback) {
-        callback(this.devices.concat(this.sensors));
+        var accessories = [];
+
+        accessories.push(new Switch(this.platform, {name:'KALLE'}));
+
+        callback(accessories);
     }
 }
