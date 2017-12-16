@@ -10,8 +10,16 @@ module.exports = class Switch extends Accessory {
     constructor(platform, config) {
         super(platform, config);
 
+
+        this.addAccessoryInformation({
+            manufacturer: 'meg',
+            model:'model',
+            serialNumber:'123'
+        });
+
+        
         this.state = false;
-        this.setupSwitch(this.Service.Lightbulb);
+        this.setupSwitch(this.Service.Switch);
     }
 
 

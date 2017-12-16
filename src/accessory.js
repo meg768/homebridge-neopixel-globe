@@ -19,12 +19,24 @@ module.exports = class Accessory extends Events {
         this.name = config.name;
         this.config = config;
         this.services = [];
-        this.serialNumber = 'FOO';
-        this.model = 'BAR';
-        this.manufacturer = 'OLLE';
         this.log('Adding acceory');
 
-        this.setupAccessoryInformation();
+    }
+
+    addAccessoryInformation(options) {
+        this.log('Adding info');
+        var service = new this.Service.AccessoryInformation();
+
+        if (options.manufacturer)
+            service.setCharacteristic(this.Characteristic.Manufacturer, options.manufacturer);
+
+        if (options.model)
+            service.setCharacteristic(this.Characteristic.Model, options.model);
+
+        if (options.serialNumber)
+            service.setCharacteristic(this.Characteristic.SerialNumber, options.serialNumber;
+
+        this.services.push(service);
     }
 
     setupAccessoryInformation() {
