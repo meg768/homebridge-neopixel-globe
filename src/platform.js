@@ -63,7 +63,7 @@ module.exports = class TelldusPlatform  {
         var accessories = [];
 
         this.log('accessories called!');
-        accessories.push(new Switch(this.platform, {name:'KALLE'}));
+        accessories.push(new Switch(this, {name:'KALLE'}));
 
         callback(accessories);
     }
