@@ -25,6 +25,7 @@
   "dependencies": {
       "color": "^2.0.0",
       "pigpio": "^0.6.2",
+      "pigpio-button": "^1.0.0",
       "rpi-neopixels": "^1.0.24",
       "rpi-obex-monitor": "^1.0.11",
       "rpi-wifi-connection": "^1.0.6",
