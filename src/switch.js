@@ -52,13 +52,13 @@ module.exports = class Switch extends Accessory {
     }
 
     turnOn() {
-        this.log('Turning on', this.device.name);
+        this.log('Turning on', this.name);
         this.state = true;
 
     }
 
     turnOff() {
-        this.log('Turning off', this.device.name);
+        this.log('Turning off', this.name);
         this.state = false;
     }
 
