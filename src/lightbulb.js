@@ -23,6 +23,7 @@ module.exports = class Switch extends Accessory {
         this.hue        = 0;
         this.brightness = 0;
         this.saturation = 50;
+        this.timer      = new Timer();
 
         var service = new this.Service.Lightbulb(this.name, 'KALLE-ANKA');
         var power = service.getCharacteristic(this.Characteristic.On);
@@ -84,9 +85,14 @@ module.exports = class Switch extends Accessory {
 
     refresh() {
 
+
         if (this.power) {
+            var now = new Date();
+            var hue = Math.floor(360 * (((now.getHours() % 12) * 60) + now.getMinutes()) / (12 * 60));
+
             this.log('Hue', this.hue, 'Saturation:', this.saturation, 'Brightness:', this.brightness);
-            this.platform.strip.fill(Color.hsl(this.hue, this.saturation, this.brightness).rgbNumber());
+            //this.platform.strip.fill(Color.hsl(this.hue, this.saturation, this.brightness).rgbNumber());
+            this.platform.strip.fill(Color.hsl(hue, 100, 50).rgbNumber());
 
         }
         else {
